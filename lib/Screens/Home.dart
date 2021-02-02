@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../Widgets/LandingPage/landingPage.dart';
 import '../Widgets/NavBar/navBar.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -11,6 +12,12 @@ class MyHomePage extends StatelessWidget {
           child: Column(
             children: [
               NavBar(),
+              Container(
+                color: Color.fromRGBO(253, 204, 77, 1.0),
+                padding: const EdgeInsets.symmetric(
+                    vertical: 20.0, horizontal: 100.0),
+                child: LandingPage(),
+              ),
             ],
           ),
         ),
