@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:taskly/Screens/ContactUs.dart';
 
 class LandingPage extends StatelessWidget {
   List<Widget> pageContainerRow(double width, BuildContext context) {
@@ -18,7 +19,7 @@ class LandingPage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: Text(
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                            "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac.",
+                        "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac.",
                         style: Theme.of(context).textTheme.headline6,
                       ),
                     ),
@@ -40,7 +41,7 @@ class LandingPage extends StatelessWidget {
                 child: Image.asset(
                   "assets/images/1.jpg",
                   width: width,
-                  scale: 1.2,
+                  scale: 1.5,
                 ),
               ),
             ],
@@ -62,7 +63,7 @@ class LandingPage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: Text(
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                            "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac.",
+                        "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac.",
                         style: Theme.of(context).textTheme.headline6,
                       ),
                     ),
@@ -70,7 +71,13 @@ class LandingPage extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                           vertical: 20.0, horizontal: 40.0),
                       color: Theme.of(context).primaryColor,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => ContactUs(),
+                            ));
+                      },
                       child: Text(
                         "Contact Us",
                         style: Theme.of(context).textTheme.button,
@@ -105,7 +112,7 @@ class LandingPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: Text(
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                      "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac."),
+                  "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac."),
             ),
             RaisedButton(
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
@@ -136,12 +143,18 @@ class LandingPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: Text(
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                      "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac."),
+                  "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac."),
             ),
             RaisedButton(
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
               color: Theme.of(context).primaryColor,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => ContactUs(),
+                    ));
+              },
               child: Text(
                 "Contact Us",
                 style: Theme.of(context).textTheme.button,

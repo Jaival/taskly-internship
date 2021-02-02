@@ -33,7 +33,7 @@ dependencies:
   # The following adds the Firebase to your application.
   firebase_core: ^0.7.0 # Firebase Core
   firebase_auth: ^0.20.0+1 # Firebase Auth
-  cloud_firestore: ^0.16.0 # Firebase Firestore
+#  cloud_firestore: ^0.16.0 # Firebase Firestore
 
 dev_dependencies:
   flutter_test:
