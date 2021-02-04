@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../Screens/Error.dart';
 import '../../Screens/Login.dart';
 import '../../Screens/SignUp.dart';
 
@@ -54,8 +55,12 @@ class LeftSide extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (BuildContext context) => LogIn(),
                         ));
-                  }else{
-
+                  } else {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => Error(),
+                        ));
                   }
                 },
                 child: Text(
