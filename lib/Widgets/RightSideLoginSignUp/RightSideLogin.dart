@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class RightSide extends StatelessWidget {
+class RightSideLogin extends StatelessWidget {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 

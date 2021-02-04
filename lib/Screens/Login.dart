@@ -22,7 +22,7 @@ class LogIn extends StatelessWidget {
           Container(
             width: width * 2 / 3,
             color: Color.fromRGBO(84, 69, 141, 1),
-            child: RightSide(),
+            child: RightSideLogin(),
           ),
         ],
       ),
