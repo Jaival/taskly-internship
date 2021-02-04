@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'Screens/Login.dart';
+import 'Screens/SignUp.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,12 +34,11 @@ class MyApp extends StatelessWidget {
               fontSize: 10.0,
               fontWeight: FontWeight.normal,
               color: Colors.white70),
-          button: TextStyle(
-              fontSize: 16.0, fontWeight: FontWeight.w500),
+          button: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
         ),
       ),
       // home: MyHomePage(),
-      home: LogIn(),
+      home: SignUp(),
     );
   }
 }
