@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:taskly/Screens/ContactUs.dart';
+import 'package:taskly/Screens/SignUp.dart';
+
+import '../../Screens/ContactUs.dart';
 
 class LandingPage extends StatelessWidget {
   List<Widget> pageContainerRow(double width, BuildContext context) {
@@ -20,15 +22,27 @@ class LandingPage extends StatelessWidget {
                       child: Text(
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
                         "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac.",
-                        style: Theme.of(context).textTheme.headline6,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6
+                            .copyWith(color: Colors.black),
                       ),
                     ),
                     RaisedButton(
                       color: Theme.of(context).primaryColor,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => SignUp(),
+                            ));
+                      },
                       child: Text(
                         "Get Started",
-                        style: Theme.of(context).textTheme.button,
+                        style: Theme.of(context)
+                            .textTheme
+                            .button
+                            .copyWith(color: Colors.white),
                       ),
                       padding: EdgeInsets.symmetric(
                           vertical: 20.0, horizontal: 40.0),
@@ -64,7 +78,10 @@ class LandingPage extends StatelessWidget {
                       child: Text(
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
                         "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac.",
-                        style: Theme.of(context).textTheme.headline6,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6
+                            .copyWith(color: Colors.black),
                       ),
                     ),
                     RaisedButton(
@@ -80,7 +97,10 @@ class LandingPage extends StatelessWidget {
                       },
                       child: Text(
                         "Contact Us",
-                        style: Theme.of(context).textTheme.button,
+                        style: Theme.of(context)
+                            .textTheme
+                            .button
+                            .copyWith(color: Colors.white),
                       ),
                     )
                   ],
@@ -111,16 +131,30 @@ class LandingPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                  "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac."),
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac.",
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    .copyWith(color: Colors.black),
+              ),
             ),
             RaisedButton(
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => SignUp(),
+                    ));
+              },
               color: Theme.of(context).primaryColor,
               child: Text(
                 "Get Started",
-                style: Theme.of(context).textTheme.button,
+                style: Theme.of(context)
+                    .textTheme
+                    .button
+                    .copyWith(color: Colors.white),
               ),
             )
           ],
@@ -142,8 +176,13 @@ class LandingPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                  "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac."),
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac.",
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    .copyWith(color: Colors.black),
+              ),
             ),
             RaisedButton(
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
@@ -157,7 +196,10 @@ class LandingPage extends StatelessWidget {
               },
               child: Text(
                 "Contact Us",
-                style: Theme.of(context).textTheme.button,
+                style: Theme.of(context)
+                    .textTheme
+                    .button
+                    .copyWith(color: Colors.white),
               ),
             )
           ],

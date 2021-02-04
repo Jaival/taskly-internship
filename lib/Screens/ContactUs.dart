@@ -5,7 +5,13 @@ class ContactUs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("Contact Us"),
+        child: Text(
+          "Contact Us",
+          style: Theme.of(context)
+              .textTheme
+              .headline5
+              .copyWith(color: Colors.black),
+        ),
       ),
     );
   }

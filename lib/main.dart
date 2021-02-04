@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Screens/SignUp.dart';
+import 'Screens/Home.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,8 +37,7 @@ class MyApp extends StatelessWidget {
           button: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
         ),
       ),
-      // home: MyHomePage(),
-      home: SignUp(),
+      home: MyHomePage(),
     );
   }
 }

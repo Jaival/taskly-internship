@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../Screens/Login.dart';
+import '../../Screens/SignUp.dart';
+
 class LeftSide extends StatelessWidget {
   final String pageName;
   final String pageFooterStarting;
@@ -39,7 +42,21 @@ class LeftSide extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  print("Tapped");
+                  if (pageFooterEnding == "Sign Up") {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => SignUp(),
+                        ));
+                  } else if (pageFooterEnding == "Login") {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => LogIn(),
+                        ));
+                  }else{
+
+                  }
                 },
                 child: Text(
                   pageFooterEnding,
