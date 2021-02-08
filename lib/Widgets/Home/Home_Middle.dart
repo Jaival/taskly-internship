@@ -15,7 +15,10 @@ class HomeMiddleDashboard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               //TODO:  Today's Tasks,
-              Text("Today's Tasks"),
+              Text(
+                "Today's Tasks",
+                style: TextStyle(color: Colors.black),
+              ),
               //TODO:  Tasks List
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -33,7 +36,10 @@ class HomeMiddleDashboard extends StatelessWidget {
                 ],
               ),
               //TODO:  Upcoming Tasks
-              Text("Upcoming Tasks"),
+              Text(
+                "Upcoming Tasks",
+                style: TextStyle(color: Colors.black),
+              ),
               //TODO:  Tasks List
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,

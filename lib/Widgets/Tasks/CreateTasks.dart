@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'TasksView.dart';
+
 class CreateTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
+    return Scaffold(
+      body: Container(
         color: Color.fromRGBO(252, 239, 249, 1),
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 100.0, horizontal: 100.0),
@@ -220,7 +222,13 @@ class CreateTask extends StatelessWidget {
                 ],
               ),
               FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => Tasks(),
+                      ));
+                },
                 child: Text(
                   "Create",
                   style: TextStyle(color: Colors.black),

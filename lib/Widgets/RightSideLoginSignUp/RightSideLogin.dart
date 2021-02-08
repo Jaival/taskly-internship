@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taskly/Screens/Home.dart';
 
 class RightSideLogin extends StatelessWidget {
   final _emailController = TextEditingController();
@@ -71,6 +72,11 @@ class RightSideLogin extends StatelessWidget {
             ),
             onPressed: () {
               print("Login");
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => Home(),
+                  ));
             },
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../my_task_card.dart';
+import 'CreateTasks.dart';
 
 class Tasks extends StatelessWidget {
   @override
@@ -23,7 +24,13 @@ class Tasks extends StatelessWidget {
                     ),
                     //TODO:New Task Button
                     FlatButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => CreateTask(),
+                            ));
+                      },
                       child: Text(
                         "New Task",
                         style: TextStyle(color: Colors.black),
