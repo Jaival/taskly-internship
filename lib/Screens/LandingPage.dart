@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Widgets/LandingPage/landingPage.dart';
+import '../Widgets/LandingPage/LandingPageView.dart';
 import '../Widgets/NavBar/navBar.dart';
 
 class MyHomePage extends StatelessWidget {
