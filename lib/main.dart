@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           button: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
         ),
       ),
-      home: MyHomePage(),
+      home: LandingPage(),
     );
   }
 }

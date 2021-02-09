@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../Widgets/LandingPage/LandingPageView.dart';
 import '../Widgets/NavBar/navBar.dart';
 
-class MyHomePage extends StatelessWidget {
+class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +16,7 @@ class MyHomePage extends StatelessWidget {
                 color: Color.fromRGBO(253, 204, 77, 1.0),
                 padding: const EdgeInsets.symmetric(
                     vertical: 20.0, horizontal: 100.0),
-                child: LandingPage(),
+                child: LandingPageView(),
               ),
             ],
           ),

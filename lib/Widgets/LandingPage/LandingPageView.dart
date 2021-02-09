@@ -4,7 +4,7 @@ import 'package:taskly/Screens/SignUp.dart';
 
 import '../../Screens/ContactUs.dart';
 
-class LandingPage extends StatelessWidget {
+class LandingPageView extends StatelessWidget {
   List<Widget> pageContainerRow(double width, BuildContext context) {
     return <Widget>[
       Column(
