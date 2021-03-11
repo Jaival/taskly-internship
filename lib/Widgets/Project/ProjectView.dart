@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../my_task_card.dart';
 import 'CreateProject.dart';
 
-class Project extends StatelessWidget {
+class ProjectView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(

@@ -1,83 +1,82 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomeLeftDashboard extends StatelessWidget {
+import '../../Screens/Projects.dart';
+import '../../Screens/Tasks.dart';
+import 'Home_Middle.dart';
+
+class HomeLeftDashboard extends StatefulWidget {
   final double width;
 
   HomeLeftDashboard({this.width});
 
   @override
+  _HomeLeftDashboardState createState() => _HomeLeftDashboardState();
+}
+
+class _HomeLeftDashboardState extends State<HomeLeftDashboard> {
+  int _selectedIndex = 0;
+  List<String> list = ["Home", "Tasks", "Project"];
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      width: (width / 5),
-      color: Color.fromRGBO(54, 65, 86, 1),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+    return Expanded(
+      child: Row(
         children: [
-          //TODO:  Logo
           Container(
-            padding: EdgeInsets.symmetric(vertical: 100.0),
-            child: Text(
-              "Taskly",
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ),
-          //TODO:  Home
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 50.0),
+            width: (widget.width / 5),
+            color: Color.fromRGBO(54, 65, 86, 1),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                MaterialButton(
-                  onPressed: () {},
+                //TODO:  Logo
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 70.0),
                   child: Text(
-                    "Home",
+                    "Taskly",
                     style: Theme.of(context)
                         .textTheme
-                        .button
-                        .copyWith(color: Colors.white),
+                        .headline4
+                        .copyWith(fontSize: 50),
                   ),
-                  padding: EdgeInsets.all(15.0),
                 ),
-                //TODO:  Tasks
-                MaterialButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Tasks",
-                    style: Theme.of(context)
-                        .textTheme
-                        .button
-                        .copyWith(color: Colors.white),
-                  ),
-                  padding: EdgeInsets.all(15.0),
+                Container(
+                  height: 300.0,
+                  padding:
+                      EdgeInsets.symmetric(vertical: 50.0, horizontal: 50.0),
+                  child: ListView.builder(
+                      itemCount: list.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ListTile(
+                          title: Text(
+                            list[index],
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                            ),
+                          ),
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex = index;
+                              print(list[index]);
+                            });
+                          }, // Handle your onTap here.
+                        );
+                      }),
                 ),
-                //TODO:  Projects
-                MaterialButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Project",
-                    style: Theme.of(context)
-                        .textTheme
-                        .button
-                        .copyWith(color: Colors.white),
-                  ),
-                  padding: EdgeInsets.all(15.0),
-                ),
-                //TODO:  Settings
-                // MaterialButton(
-                //   onPressed: () {},
-                //   child: Text(
-                //     "Settings",
-                //     style: Theme.of(context)
-                //         .textTheme
-                //         .button
-                //         .copyWith(color: Colors.white),
-                //   ),
-                //   padding: EdgeInsets.all(15.0),
-                // ),
               ],
             ),
           ),
+          //TODO:  Middle
+          _selectedIndex == 0
+              ? HomeMiddleDashboard()
+              : _selectedIndex == 1
+                  ? Tasks()
+                  : _selectedIndex == 2
+                      ? Projects()
+                      : Container(
+                          color: Colors.black,
+                        ),
         ],
       ),
     );
