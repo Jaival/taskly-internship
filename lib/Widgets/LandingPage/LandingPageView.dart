@@ -32,10 +32,11 @@ class LandingPageView extends StatelessWidget {
                       color: Theme.of(context).primaryColor,
                       onPressed: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (BuildContext context) => SignUp(),
-                            ));
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => SignUp(),
+                          ),
+                        );
                       },
                       child: Text(
                         "Get Started",

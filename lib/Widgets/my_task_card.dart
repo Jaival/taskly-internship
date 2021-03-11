@@ -5,45 +5,55 @@ class MyTaskCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 200,
-      height: 150,
+      height: 220,
       child: Card(
         child: Container(
-          // margin: EdgeInsets.all(10.0),
+          margin: EdgeInsets.all(10.0),
           padding: EdgeInsets.all(10.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Task Name"),
-              SizedBox(height: 10.0),
-              Text("Sub Tasks"),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  ClipOval(
-                    child: Material(
-                      color: Colors.blue, // button color
-                      child: InkWell(
-                        splashColor: Colors.red, // inkwell color
-                        child: SizedBox(
-                            width: 56, height: 56, child: Icon(Icons.menu)),
-                        onTap: () {},
-                      ),
-                    ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10.0),
+                child: Text(
+                  "Task Name",
+                  style: TextStyle(
+                    fontSize: 25.0,
+                    color: Colors.black,
                   ),
-                  MaterialButton(
-                    onPressed: () {},
-                    color: Colors.blue,
-                    textColor: Colors.white,
-                    child: Icon(
-                      Icons.camera_alt,
-                      size: 24,
-                    ),
-                    padding: EdgeInsets.all(16),
-                    shape: CircleBorder(),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10.0),
+                child: Text(
+                  "Sub Tasks",
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    color: Colors.black,
                   ),
-                ],
-              )
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10.0),
+                child: Text(
+                  "Priority",
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10.0),
+                child: Text(
+                  "Status",
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

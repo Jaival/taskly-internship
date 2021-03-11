@@ -130,7 +130,7 @@ class HomeRightDashboard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Out Of Schedule",
+                      "Out Of \nSchedule",
                       style: Theme.of(context)
                           .textTheme
                           .bodyText2

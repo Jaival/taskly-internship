@@ -18,6 +18,27 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Text("Taskly"),
+        elevation: null,
+        actions: [
+          TextButton.icon(
+            style: TextButton.styleFrom(padding: EdgeInsets.all(20.0)),
+            onPressed: () {
+              print("pressed");
+            },
+            icon: Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
+            label: Text(
+              "Logout",
+              style: TextStyle(color: Colors.white),
+            ),
+          )
+        ],
+      ),
       body: Row(
         children: [
           //TODO:  Left Side
@@ -29,21 +50,30 @@ class _HomeState extends State<Home> {
               children: [
                 //TODO:  Logo
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 100.0),
+                  padding: EdgeInsets.symmetric(vertical: 70.0),
                   child: Text(
                     "Taskly",
-                    style: Theme.of(context).textTheme.headline4,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline4
+                        .copyWith(fontSize: 50),
                   ),
                 ),
-                //TODO:  Home
                 Container(
                   height: 300.0,
-                  padding: EdgeInsets.symmetric(vertical: 50.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 50.0, horizontal: 50.0),
                   child: ListView.builder(
                       itemCount: list.length,
                       itemBuilder: (BuildContext context, int index) {
                         return ListTile(
-                          title: Text(list[index]),
+                          title: Text(
+                            list[index],
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                            ),
+                          ),
                           onTap: () {
                             print(list[index]);
                             setState(() {
