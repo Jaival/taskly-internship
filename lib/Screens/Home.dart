@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../Services/Auth.dart';
 import '../Widgets/Home/Home_Left.dart';
 import '../Widgets/Home/Home_Right.dart';
 
 class Home extends StatelessWidget {
   Widget build(BuildContext context) {
+    final AuthService _authService = AuthService();
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
@@ -14,8 +16,8 @@ class Home extends StatelessWidget {
         actions: [
           TextButton.icon(
             style: TextButton.styleFrom(padding: EdgeInsets.all(20.0)),
-            onPressed: () {
-              print("pressed");
+            onPressed: () async {
+              await _authService.signOut();
             },
             icon: Icon(
               Icons.logout,
