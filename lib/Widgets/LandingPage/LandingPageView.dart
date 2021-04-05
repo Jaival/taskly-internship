@@ -28,8 +28,11 @@ class LandingPageView extends StatelessWidget {
                             .copyWith(color: Colors.black),
                       ),
                     ),
-                    RaisedButton(
-                      color: Theme.of(context).primaryColor,
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 20.0, horizontal: 40.0),
+                          primary: Theme.of(context).primaryColor),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -45,8 +48,6 @@ class LandingPageView extends StatelessWidget {
                             .button
                             .copyWith(color: Colors.white),
                       ),
-                      padding: EdgeInsets.symmetric(
-                          vertical: 20.0, horizontal: 40.0),
                     )
                   ],
                 ),
@@ -85,10 +86,12 @@ class LandingPageView extends StatelessWidget {
                             .copyWith(color: Colors.black),
                       ),
                     ),
-                    RaisedButton(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 20.0, horizontal: 40.0),
-                      color: Theme.of(context).primaryColor,
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 20.0, horizontal: 40.0),
+                        primary: Theme.of(context).primaryColor,
+                      ),
                       onPressed: () {
                         Navigator.push(
                             context,
@@ -140,16 +143,19 @@ class LandingPageView extends StatelessWidget {
                     .copyWith(color: Colors.black),
               ),
             ),
-            RaisedButton(
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+                  primary: Theme.of(context).primaryColor),
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => SignUp(),
-                    ));
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => SignUp(),
+                  ),
+                );
               },
-              color: Theme.of(context).primaryColor,
               child: Text(
                 "Get Started",
                 style: Theme.of(context)
@@ -185,9 +191,11 @@ class LandingPageView extends StatelessWidget {
                     .copyWith(color: Colors.black),
               ),
             ),
-            RaisedButton(
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
-              color: Theme.of(context).primaryColor,
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+                primary: Theme.of(context).primaryColor,
+              ),
               onPressed: () {
                 Navigator.push(
                     context,

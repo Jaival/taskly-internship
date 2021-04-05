@@ -58,7 +58,7 @@ class _HomeLeftDashboardState extends State<HomeLeftDashboard> {
                           onTap: () {
                             setState(() {
                               _selectedIndex = index;
-                              print(list[index]);
+                              // print(list[index]);
                             });
                           }, // Handle your onTap here.
                         );
@@ -67,7 +67,7 @@ class _HomeLeftDashboardState extends State<HomeLeftDashboard> {
               ],
             ),
           ),
-          //TODO:  Middle
+          // Middle
           _selectedIndex == 0
               ? HomeMiddleDashboard()
               : _selectedIndex == 1

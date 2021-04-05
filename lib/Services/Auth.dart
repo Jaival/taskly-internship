@@ -31,6 +31,12 @@ class AuthService {
       await DatabaseService(uid: user.uid).updateUserData(
           email: email, firstName: firstName, lastName: lastName);
 
+      // Create Document with UID when user registers for project collection
+      await DatabaseService(uid: user.uid).setProjectData();
+
+      // Create Document with UID when user registers for task collection
+      await DatabaseService(uid: user.uid).setTasksData();
+
       return _userFromFirebase(user);
     } catch (e) {
       print(e.toString());

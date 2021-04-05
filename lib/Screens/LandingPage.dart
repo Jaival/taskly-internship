@@ -15,7 +15,9 @@ class LandingPage extends StatelessWidget {
               Container(
                 color: Color.fromRGBO(253, 204, 77, 1.0),
                 padding: const EdgeInsets.symmetric(
-                    vertical: 20.0, horizontal: 100.0),
+                  vertical: 20.0,
+                  horizontal: 100.0,
+                ),
                 child: LandingPageView(),
               ),
             ],

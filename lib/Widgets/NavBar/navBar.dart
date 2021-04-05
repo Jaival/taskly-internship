@@ -33,7 +33,11 @@ class DesktopNavBar extends StatelessWidget {
           ),
           Row(
             children: [
-              FlatButton(
+              TextButton(
+                style: TextButton.styleFrom(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+                ),
                 onPressed: () {
                   Navigator.push(
                       context,
@@ -41,14 +45,21 @@ class DesktopNavBar extends StatelessWidget {
                         builder: (BuildContext context) => LogIn(),
                       ));
                 },
-                child: Text("Login"),
-                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+                child: Text("Login",
+                    style: Theme.of(context)
+                        .textTheme
+                        .button
+                        .copyWith(color: Theme.of(context).primaryColor)),
               ),
               SizedBox(
                 width: 10.0,
               ),
-              FlatButton(
-                color: Theme.of(context).primaryColor,
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Theme.of(context).primaryColor,
+                  padding:
+                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+                ),
                 onPressed: () {
                   Navigator.push(
                       context,
@@ -63,7 +74,6 @@ class DesktopNavBar extends StatelessWidget {
                       .button
                       .copyWith(color: Colors.white),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
               )
             ],
           )
@@ -91,7 +101,11 @@ class MobileNavBar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FlatButton(
+                TextButton(
+                  style: TextButton.styleFrom(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+                  ),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -99,15 +113,21 @@ class MobileNavBar extends StatelessWidget {
                           builder: (BuildContext context) => LogIn(),
                         ));
                   },
-                  child: Text("Login"),
-                  padding:
-                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+                  child: Text("Login",
+                      style: Theme.of(context)
+                          .textTheme
+                          .button
+                          .copyWith(color: Theme.of(context).primaryColor)),
                 ),
                 SizedBox(
                   width: 10.0,
                 ),
-                FlatButton(
-                  color: Theme.of(context).primaryColor,
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Theme.of(context).primaryColor,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+                  ),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -122,8 +142,6 @@ class MobileNavBar extends StatelessWidget {
                         .button
                         .copyWith(color: Colors.white),
                   ),
-                  padding:
-                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
                 )
               ],
             ),

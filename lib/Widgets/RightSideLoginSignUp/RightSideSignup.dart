@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:taskly/Shared/Loading.dart';
 
 import '../../Services/Auth.dart';
+import '../../Shared/Loading.dart';
 
 class RightSideSignUp extends StatefulWidget {
   @override
