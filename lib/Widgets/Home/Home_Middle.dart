@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../Shared/Loading.dart';
 
 import '../../Model/ProjectModel.dart';
 import '../../Model/TaskModel.dart';
-import '../../Model/User.dart';
-import '../../Services/Database.dart';
 import '../../Shared/CustomTile.dart';
 
 class HomeMiddleDashboard extends StatelessWidget {
+  final double width;
+
+  HomeMiddleDashboard({this.width});
+
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<MyUser>(context);
+    final task = Provider.of<List<TaskData>>(context);
+    final project = Provider.of<List<ProjectData>>(context);
     return Expanded(
       child: Container(
         height: double.infinity,
@@ -35,56 +39,40 @@ class HomeMiddleDashboard extends StatelessWidget {
                   ),
                 ),
                 // Stream Builder Tasks List
-                StreamBuilder<List<ProjectData>>(
-                    stream: DatabaseService(uid: user.uid).streamProjectData(),
-                    builder:
-                        (context, AsyncSnapshot<List<ProjectData>> snapshot) {
-                      if (snapshot.connectionState == ConnectionState.active) {
-                        if (!snapshot.hasData) {
-                          print("error:" + snapshot.error.toString());
-                          return Text("Something went wrong");
-                        }
-                        if (snapshot.hasData) {
-                          return Container(
-                            margin: EdgeInsets.only(left: 10.0),
-                            height: 200,
-                            child: ListView(
-                              scrollDirection: Axis.horizontal,
-                              children: snapshot.data.map<Widget>((data) {
-                                Color color;
-                                String priority = data.priority;
+                project == null
+                    ? Loading()
+                    : Container(
+                        height: 200.0,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: project.map<Widget>((data) {
+                            Color color;
+                            String priority = data.priority;
 
-                                if (priority == "Immediate") {
-                                  color = Color.fromRGBO(240, 93, 94, 1.0);
-                                } else if (priority == "High") {
-                                  color = Color.fromRGBO(255, 186, 73, 1.0);
-                                } else if (priority == "Medium") {
-                                  color = Color.fromRGBO(255, 227, 129, 1.0);
-                                } else if (priority == "Low") {
-                                  color = Color.fromRGBO(97, 226, 148, 1.0);
-                                }
+                            if (priority == "Immediate") {
+                              color = Color.fromRGBO(240, 93, 94, 1.0);
+                            } else if (priority == "High") {
+                              color = Color.fromRGBO(255, 186, 73, 1.0);
+                            } else if (priority == "Medium") {
+                              color = Color.fromRGBO(255, 227, 129, 1.0);
+                            } else if (priority == "Low") {
+                              color = Color.fromRGBO(97, 226, 148, 1.0);
+                            }
 
-                                return Container(
-                                  margin: EdgeInsets.only(right: 20.0),
-                                  width: 200,
-                                  child: CustomTile(
-                                    name: data.projectName,
-                                    description: data.projectDesc,
-                                    status: data.status,
-                                    priority: data.priority,
-                                    color: color,
-                                  ),
-                                );
-                              }).toList(),
-                            ),
-                          );
-                        } else {
-                          return Text("No Data");
-                        }
-                      } else {
-                        return Text("Loading");
-                      }
-                    }),
+                            return Container(
+                              // margin: EdgeInsets.only(right: 10.0),
+                              width: 200,
+                              child: CustomTile(
+                                name: data.projectName,
+                                description: data.projectDesc,
+                                status: data.status,
+                                priority: data.priority,
+                                color: color,
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
                 // Upcoming Tasks
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 10.0),
@@ -98,56 +86,40 @@ class HomeMiddleDashboard extends StatelessWidget {
                   ),
                 ),
                 //Stream Builder Tasks List
-                StreamBuilder<List<TaskData>>(
-                  stream: DatabaseService(uid: user.uid).streamTaskData(),
-                  builder: (context, AsyncSnapshot<List<TaskData>> snapshot) {
-                    if (snapshot.connectionState == ConnectionState.active) {
-                      if (!snapshot.hasData) {
-                        print("error::" + snapshot.error.toString());
-                        return Text("Something went wrong");
-                      }
-                      if (snapshot.hasData) {
-                        return Container(
-                          margin: EdgeInsets.only(left: 10.0),
-                          height: 200,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: snapshot.data.map<Widget>((data) {
-                              Color color;
-                              String priority = data.priority;
+                task == null
+                    ? Loading()
+                    : Container(
+                        height: 200.0,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: task.map<Widget>((data) {
+                            Color color;
+                            String priority = data.priority;
 
-                              if (priority == "Immediate") {
-                                color = Color.fromRGBO(240, 93, 94, 1.0);
-                              } else if (priority == "High") {
-                                color = Color.fromRGBO(255, 186, 73, 1.0);
-                              } else if (priority == "Medium") {
-                                color = Color.fromRGBO(255, 227, 129, 1.0);
-                              } else if (priority == "Low") {
-                                color = Color.fromRGBO(97, 226, 148, 1.0);
-                              }
+                            if (priority == "Immediate") {
+                              color = Color.fromRGBO(240, 93, 94, 1.0);
+                            } else if (priority == "High") {
+                              color = Color.fromRGBO(255, 186, 73, 1.0);
+                            } else if (priority == "Medium") {
+                              color = Color.fromRGBO(255, 227, 129, 1.0);
+                            } else if (priority == "Low") {
+                              color = Color.fromRGBO(97, 226, 148, 1.0);
+                            }
 
-                              return Container(
-                                margin: EdgeInsets.only(right: 20.0),
-                                width: 200,
-                                child: CustomTile(
-                                  name: data.taskName,
-                                  description: data.taskDesc,
-                                  status: data.status,
-                                  priority: data.priority,
-                                  color: color,
-                                ),
-                              );
-                            }).toList(),
-                          ),
-                        );
-                      } else {
-                        return Text("No Data");
-                      }
-                    } else {
-                      return Text("Loading");
-                    }
-                  },
-                ),
+                            return Container(
+                              // margin: EdgeInsets.only(right: 10.0),
+                              width: 200,
+                              child: CustomTile(
+                                name: data.taskName,
+                                description: data.taskDesc,
+                                status: data.status,
+                                priority: data.priority,
+                                color: color,
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
               ],
             ),
           ),

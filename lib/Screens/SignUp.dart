@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:taskly/Model/User.dart';
+import '../Model/User.dart';
 
 import '../Widgets/SignUp/SignUpView.dart';
 import 'Home.dart';

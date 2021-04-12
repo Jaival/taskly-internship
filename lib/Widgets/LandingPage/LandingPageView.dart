@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:taskly/Screens/SignUp.dart';
+import '../../Screens/SignUp.dart';
 
 import '../../Screens/ContactUs.dart';
 

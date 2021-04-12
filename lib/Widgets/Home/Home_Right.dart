@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../Model/ProjectModel.dart';
+import '../../Model/TaskModel.dart';
 
 class HomeRightDashboard extends StatelessWidget {
   final double width;
@@ -7,6 +10,19 @@ class HomeRightDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int totalTasks;
+    int totalProject;
+    final task = Provider.of<List<TaskData>>(context);
+    final project = Provider.of<List<ProjectData>>(context);
+
+    if (task != null && project != null) {
+      totalTasks = task.length;
+      totalProject = project.length;
+    } else {
+      totalTasks = 0;
+      totalProject = 0;
+    }
+
     return Container(
       width: width / 5,
       child: Column(
@@ -19,137 +35,72 @@ class HomeRightDashboard extends StatelessWidget {
               children: [
                 CircleAvatar(
                   child: Text("J"),
+                  radius: 25.0,
                 ),
-                IconButton(icon: Icon(Icons.arrow_drop_down), onPressed: () {})
+                IconButton(
+                    icon: RotatedBox(
+                      quarterTurns: 1,
+                      child: icon,
+                    ),
+                    onPressed: () {})
               ],
             ),
           ),
-          //TODO:  Information about projects and tasks
+          // Information about projects and tasks
           Padding(
             padding: EdgeInsets.only(
                 top: 150.0, left: 50.0, right: 15.0, bottom: 30.0),
-            child: Row(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                //TODO:  Total Projects
-                Padding(
-                  padding: EdgeInsets.only(right: 20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Total Projects",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText2
-                            .copyWith(color: Colors.black),
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.double_arrow_outlined),
-                          Text(
-                            "4",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                .copyWith(color: Colors.black),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
+                Text(
+                  "Total Projects",
+                  style: Theme.of(context).textTheme.bodyText2.copyWith(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 20.0),
                 ),
-                //TODO:  Completed
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
                   children: [
+                    icon,
                     Text(
-                      "Completed",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText2
-                          .copyWith(color: Colors.black),
+                      totalProject.toString(),
+                      style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20.0),
                     ),
-                    Row(
-                      children: [
-                        Icon(Icons.double_arrow_outlined),
-                        Text(
-                          "4",
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText2
-                              .copyWith(color: Colors.black),
-                        ),
-                      ],
-                    )
                   ],
-                ),
+                )
               ],
             ),
           ),
-          //TODO:  Information about projects and tasks
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 50.0),
-            child: Row(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                //TODO: In Progress
-                Padding(
-                  padding: EdgeInsets.only(right: 20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "In Progress",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText2
-                            .copyWith(color: Colors.black),
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.double_arrow_outlined),
-                          Text(
-                            "4",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                .copyWith(color: Colors.black),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
+                Text(
+                  "Total tasks",
+                  style: Theme.of(context).textTheme.bodyText2.copyWith(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 20.0),
                 ),
-                //TODO:  Out Of Schedule
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
                   children: [
+                    icon,
                     Text(
-                      "Out Of \nSchedule",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText2
-                          .copyWith(color: Colors.black),
+                      totalTasks.toString(),
+                      style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w800,
+                          fontSize: 20.0),
                     ),
-                    Row(
-                      children: [
-                        Icon(Icons.double_arrow_outlined),
-                        Text(
-                          "4",
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText2
-                              .copyWith(color: Colors.black),
-                        ),
-                      ],
-                    )
                   ],
-                ),
+                )
               ],
             ),
           ),
@@ -159,3 +110,8 @@ class HomeRightDashboard extends StatelessWidget {
     );
   }
 }
+
+final icon = Icon(
+  Icons.play_arrow_rounded,
+  size: 30.0,
+);

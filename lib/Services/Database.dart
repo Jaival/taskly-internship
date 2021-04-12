@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:taskly/Model/ProjectModel.dart';
-import 'package:taskly/Model/TaskModel.dart';
+import '../Model/ProjectModel.dart';
+import '../Model/TaskModel.dart';
 
 class DatabaseService {
   final String uid;
@@ -229,8 +229,12 @@ class DatabaseService {
   // Future
 
   // Get Future of Project data
-  Future<QuerySnapshot> futureProjectData() async {
-    return await myCollectionProjects.doc(uid).collection("userProjects").get();
+  Future<List<ProjectData>> futureProjectData() async {
+    return await myCollectionProjects
+        .doc(uid)
+        .collection("userProjects")
+        .get()
+        .then(_listProjectData);
   }
 
   // Get Future of Project Task data
@@ -243,7 +247,11 @@ class DatabaseService {
   }
 
   // Get Future of Task data
-  Future<QuerySnapshot> futureTaskData() async {
-    return await myCollectionTasks.doc(uid).collection("userTasks").get();
+  Future<List<TaskData>> futureTaskData() async {
+    return await myCollectionTasks
+        .doc(uid)
+        .collection("userTasks")
+        .get()
+        .then(_listTaskData);
   }
 }

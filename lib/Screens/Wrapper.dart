@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:taskly/Screens/Home.dart';
-import 'package:taskly/Screens/LandingPage.dart';
+import '../Screens/Home.dart';
+import '../Screens/LandingPage.dart';
 
 import '../Model/User.dart';
 
