@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../Shared/Loading.dart';
 
+import '../../Shared/Loading.dart';
 import '../../Model/ProjectModel.dart';
 import '../../Model/TaskModel.dart';
 import '../../Shared/CustomTile.dart';

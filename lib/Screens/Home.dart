@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../Model/UserData.dart';
 import '../Model/ProjectModel.dart';
 import '../Model/TaskModel.dart';
 import '../Model/FirebaseUser.dart';
 import '../Services/Database.dart';
-
 import '../Widgets/Home/Home_Right.dart';
-
 import '../Services/Auth.dart';
 import '../Widgets/Home/Home_Left.dart';
 

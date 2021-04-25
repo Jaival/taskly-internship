@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../Screens/Home.dart';
 import '../Screens/LandingPage.dart';
-
 import '../Model/FirebaseUser.dart';
 
 class Wrapper extends StatelessWidget {

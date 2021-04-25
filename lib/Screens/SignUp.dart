@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../Model/FirebaseUser.dart';
 
+import '../Model/FirebaseUser.dart';
 import '../Widgets/SignUp/SignUpView.dart';
 import 'Home.dart';
 

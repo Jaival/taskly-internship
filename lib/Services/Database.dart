@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:taskly/Model/SharedTaskModel.dart';
-import 'package:taskly/Model/UserData.dart';
+
+import '../Model/SharedTaskModel.dart';
+import '../Model/UserData.dart';
 import '../Model/ProjectModel.dart';
 import '../Model/TaskModel.dart';
 

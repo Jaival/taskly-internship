@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../Widgets/Profile/ProfileView.dart';
+
+import '../Widgets/Profile/ProfileView.dart';
 
 class Profile extends StatelessWidget {
   final user;

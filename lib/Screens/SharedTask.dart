@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../Widgets/SharedTask/SharedTaskView.dart';
+import '../Widgets/SharedTask/SharedTaskView.dart';
 
 class SharedTask extends StatelessWidget {
   final user;
