@@ -3,9 +3,10 @@ import 'package:provider/provider.dart';
 
 import '../../Model/ProjectModel.dart';
 import '../../Shared/CustomNoTask.dart';
-import '../../Shared/CustomTile.dart';
+import '../../Shared/CustomProjectTile.dart';
 import '../../Shared/Loading.dart';
 import 'CreateProject.dart';
+import 'ProjectTaskView.dart';
 
 class ProjectView extends StatelessWidget {
   @override
@@ -105,13 +106,14 @@ class ProjectView extends StatelessWidget {
                                     return status == "Not Started"
                                         ? Container(
                                             width: 200,
-                                            child: CustomTile(
+                                            child: CustomProjectTile(
                                               name: data.projectName,
                                               description: data.projectDesc,
                                               status: data.status,
                                               priority: data.priority,
                                               color: color,
-                                              onTapped: () {
+                                              showEdit: true,
+                                              iconTapped: () {
                                                 Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
@@ -124,6 +126,19 @@ class ProjectView extends StatelessWidget {
                                                           data.projectDesc,
                                                       status: data.status,
                                                       priority: data.priority,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              onTapped: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (BuildContext
+                                                            context) =>
+                                                        ProjectTaskView(
+                                                      projectId: data.projectId,
+                                                      projectName: data.projectName,
                                                     ),
                                                   ),
                                                 );
@@ -177,13 +192,14 @@ class ProjectView extends StatelessWidget {
                                     return status == "In Progress"
                                         ? Container(
                                             width: 200,
-                                            child: CustomTile(
+                                            child: CustomProjectTile(
                                               name: data.projectName,
                                               description: data.projectDesc,
                                               status: data.status,
                                               priority: data.priority,
                                               color: color,
-                                              onTapped: () {
+                                              showEdit: true,
+                                              iconTapped: () {
                                                 Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
@@ -196,6 +212,19 @@ class ProjectView extends StatelessWidget {
                                                           data.projectDesc,
                                                       status: data.status,
                                                       priority: data.priority,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              onTapped: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (BuildContext
+                                                            context) =>
+                                                        ProjectTaskView(
+                                                      projectId: data.projectId,
+                                                      projectName: data.projectName,
                                                     ),
                                                   ),
                                                 );
@@ -248,13 +277,14 @@ class ProjectView extends StatelessWidget {
                                     return status == "Complete"
                                         ? Container(
                                             width: 200,
-                                            child: CustomTile(
+                                            child: CustomProjectTile(
                                               name: data.projectName,
                                               description: data.projectDesc,
                                               status: data.status,
                                               priority: data.priority,
                                               color: color,
-                                              onTapped: () {
+                                              showEdit: true,
+                                              iconTapped: () {
                                                 Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
@@ -267,6 +297,19 @@ class ProjectView extends StatelessWidget {
                                                           data.projectDesc,
                                                       status: data.status,
                                                       priority: data.priority,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              onTapped: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (BuildContext
+                                                            context) =>
+                                                        ProjectTaskView(
+                                                      projectId: data.projectId,
+                                                      projectName: data.projectName,
                                                     ),
                                                   ),
                                                 );
