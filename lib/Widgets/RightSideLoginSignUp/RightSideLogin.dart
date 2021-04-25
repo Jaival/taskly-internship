@@ -104,12 +104,49 @@ class _RightSideLoginState extends State<RightSideLogin> {
                             .signInWithEmailAndPassword(email, password);
                         if (result == null) {
                           setState(() {
-                            error = 'Something is wrong';
+                            error =
+                                'Entered Username or Password is incorrect.';
                             loading = false;
                           });
+                          return showDialog<void>(
+                            context: context,
+                            barrierDismissible: false, // user must tap button!
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text(error,
+                                    style: TextStyle(color: Colors.black)),
+                                actions: <Widget>[
+                                  TextButton(
+                                    child: Text('Okay'),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
                         }
                       } else {
-                        print("Some Error");
+                        return showDialog<void>(
+                          context: context,
+                          barrierDismissible: false, // user must tap button!
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text(
+                                  'It looks like you missed a field or few. ',
+                                  style: TextStyle(color: Colors.black)),
+                              actions: <Widget>[
+                                TextButton(
+                                  child: Text('Okay'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
                       }
                     },
                   ),

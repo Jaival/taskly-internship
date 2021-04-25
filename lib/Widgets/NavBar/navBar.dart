@@ -22,7 +22,7 @@ class DesktopNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+      padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 40.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -86,17 +86,17 @@ class MobileNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+      padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             "Taskly",
-            style: TextStyle(fontSize: 30.0),
+            style: TextStyle(fontSize: 30.0, color: Colors.black),
           ),
           Padding(
             padding:
-                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+                EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

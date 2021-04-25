@@ -5,6 +5,11 @@ import '../../Screens/SignUp.dart';
 import '../../Screens/ContactUs.dart';
 
 class LandingPageView extends StatelessWidget {
+  final String taskText =
+      "Why is task management tool important? It helps us to keep track of the tasks from the beginning, setting deadlines, prioritizing the tasks.";
+  final String organizationText =
+      "Why is task management tool important? It helps us to keep track of the tasks from the beginning, setting deadlines, prioritizing the tasks.";
+
   List<Widget> pageContainerRow(double width, BuildContext context) {
     return <Widget>[
       Column(
@@ -12,7 +17,7 @@ class LandingPageView extends StatelessWidget {
           Row(
             children: [
               Container(
-                padding: EdgeInsets.only(right: 10.0),
+                padding: EdgeInsets.only(right: 30.0),
                 width: width,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -20,8 +25,7 @@ class LandingPageView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                        "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac.",
+                        taskText,
                         style: Theme.of(context)
                             .textTheme
                             .headline6
@@ -78,8 +82,7 @@ class LandingPageView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                        "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac.",
+                        organizationText,
                         style: Theme.of(context)
                             .textTheme
                             .headline6
@@ -135,8 +138,7 @@ class LandingPageView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac.",
+                taskText,
                 style: Theme.of(context)
                     .textTheme
                     .headline6
@@ -183,8 +185,7 @@ class LandingPageView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                "Auctor neque vitae tempus quam. Risus in hendrerit gravida rutrum quisque non tellus orci ac.",
+                organizationText,
                 style: Theme.of(context)
                     .textTheme
                     .headline6
