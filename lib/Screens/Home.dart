@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../Model/UserData.dart';
 import '../Model/ProjectModel.dart';
 import '../Model/TaskModel.dart';
-import '../Model/User.dart';
+import '../Model/FirebaseUser.dart';
 import '../Services/Database.dart';
 
 import '../Widgets/Home/Home_Right.dart';
@@ -14,7 +15,8 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final AuthService _authService = AuthService();
     double width = MediaQuery.of(context).size.width;
-    final user = Provider.of<MyUser>(context);
+    final user = Provider.of<FirebaseUser>(context);
+
     return MultiProvider(
       providers: [
         StreamProvider<List<TaskData>>.value(
@@ -25,6 +27,10 @@ class Home extends StatelessWidget {
           initialData: null,
           value: DatabaseService(uid: user.uid).streamProjectData(),
         ),
+        StreamProvider<UserData>.value(
+          initialData: null,
+          value: DatabaseService(uid: user.uid).streamUserData(),
+        )
       ],
       child: Scaffold(
         appBar: AppBar(
@@ -54,7 +60,7 @@ class Home extends StatelessWidget {
             HomeLeftDashboard(
               width: width,
             ),
-            //TODO: Right Side
+            // Right Side
             HomeRightDashboard(
               width: width,
             ),

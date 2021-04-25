@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../Model/UserData.dart';
+import '../../Screens/Profile.dart';
+
 import '../../Model/ProjectModel.dart';
 import '../../Model/TaskModel.dart';
 
@@ -14,6 +17,7 @@ class HomeRightDashboard extends StatelessWidget {
     int totalProject;
     final task = Provider.of<List<TaskData>>(context);
     final project = Provider.of<List<ProjectData>>(context);
+    final user = Provider.of<UserData>(context);
 
     if (task != null && project != null) {
       totalTasks = task.length;
@@ -30,20 +34,31 @@ class HomeRightDashboard extends StatelessWidget {
           //TODO:  Profile(Pic and button)
           Container(
             padding: EdgeInsets.only(top: 20.0, right: 20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                CircleAvatar(
-                  child: Text("J"),
-                  radius: 25.0,
-                ),
-                IconButton(
-                    icon: RotatedBox(
-                      quarterTurns: 1,
-                      child: icon,
-                    ),
-                    onPressed: () {})
-              ],
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => Profile(
+                        user: user,
+                      ),
+                    ));
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  CircleAvatar(
+                    child: Text("J"),
+                    radius: 25.0,
+                  ),
+                  IconButton(
+                      icon: RotatedBox(
+                        quarterTurns: 1,
+                        child: icon,
+                      ),
+                      onPressed: null)
+                ],
+              ),
             ),
           ),
           // Information about projects and tasks
