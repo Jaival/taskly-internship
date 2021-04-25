@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../Model/UserData.dart';
+import '../../Screens/SharedTask.dart';
 import '../../Screens/Projects.dart';
 import '../../Screens/Tasks.dart';
 import 'Home_Middle.dart';
@@ -15,10 +18,11 @@ class HomeLeftDashboard extends StatefulWidget {
 
 class _HomeLeftDashboardState extends State<HomeLeftDashboard> {
   int _selectedIndex = 0;
-  List<String> list = ["Home", "Tasks", "Project"];
+  List<String> list = ["Home", "Tasks", "Project", "SharedTask"];
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserData>(context);
     return Expanded(
       child: Row(
         children: [
@@ -73,9 +77,11 @@ class _HomeLeftDashboardState extends State<HomeLeftDashboard> {
                   ? Tasks()
                   : _selectedIndex == 2
                       ? Projects()
-                      : Container(
-                          color: Colors.black,
-                        ),
+                      : _selectedIndex == 3
+                          ? SharedTask(user: user)
+                          : Container(
+                              color: Colors.black,
+                            ),
         ],
       ),
     );

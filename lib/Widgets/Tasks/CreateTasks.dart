@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../Model/User.dart';
+import '../../Model/FirebaseUser.dart';
 import '../../Services/Database.dart';
 import '../../Shared/DropDownData.dart';
 
@@ -12,9 +12,17 @@ class CreateTask extends StatefulWidget {
 
   final String priority;
   final String status;
+  final String member;
+  final String projectId;
 
   CreateTask(
-      {this.docId, this.name, this.description, this.priority, this.status});
+      {this.docId,
+      this.name,
+      this.description,
+      this.priority,
+      this.status,
+      this.projectId,
+      this.member});
 
   @override
   _CreateTaskState createState() => _CreateTaskState();
@@ -24,6 +32,8 @@ class _CreateTaskState extends State<CreateTask> {
   final TextEditingController controllerName = TextEditingController();
 
   final TextEditingController controllerDesc = TextEditingController();
+
+  final TextEditingController controllerMember = TextEditingController();
 
   String _selectedItemPriority;
   String _selectedItemStatus;
@@ -37,10 +47,11 @@ class _CreateTaskState extends State<CreateTask> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<MyUser>(context);
+    final user = Provider.of<FirebaseUser>(context);
 
     controllerName.text = widget.name;
     controllerDesc.text = widget.description;
+    controllerMember.text = widget.member;
     // _selectedItemPriority = widget.priority;
     // _selectedItemStatus = widget.status;
 
@@ -99,7 +110,7 @@ class _CreateTaskState extends State<CreateTask> {
                       ),
                     ),
                   ),
-                  //   Task Description
+                  // Task Description
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 12.0),
                     width: 250,
@@ -124,20 +135,6 @@ class _CreateTaskState extends State<CreateTask> {
                       ),
                     ),
                   ),
-                  widget.priority == null
-                      ? Text(
-                          "Task Not Created",
-                          style: TextStyle(color: Colors.black),
-                        )
-                      : Text("Priority: " + widget.priority,
-                          style: TextStyle(color: Colors.black)),
-                  widget.status == null
-                      ? Text(
-                          "Task Not Created",
-                          style: TextStyle(color: Colors.black),
-                        )
-                      : Text("Priority: " + widget.status,
-                          style: TextStyle(color: Colors.black)),
                   // Priority
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 12.0),
@@ -199,6 +196,36 @@ class _CreateTaskState extends State<CreateTask> {
                       },
                     ),
                   ),
+                  // Member
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 12.0),
+                    width: 250,
+                    // color: Colors.yellow,
+                    child: TextField(
+                      controller: controllerMember,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1
+                          .copyWith(color: Colors.black),
+                      cursorColor: Colors.black,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        filled: true,
+                        fillColor: Color.fromRGBO(196, 196, 196, 0.42),
+                        labelText: "Member",
+                        labelStyle: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            .copyWith(color: Colors.black),
+                      ),
+                    ),
+                  ),
+                  Text("Note:Don't Update the member for now",
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle1
+                          .copyWith(color: Colors.black))
                 ],
               ),
               Column(
@@ -214,10 +241,16 @@ class _CreateTaskState extends State<CreateTask> {
                           ? () async {
                               await DatabaseService(uid: user.uid)
                                   .createTaskData(
-                                taskName: controllerName.text.toString(),
-                                taskDesc: controllerDesc.text.toString(),
-                                priority: _selectedItemPriority.toString(),
-                                status: _selectedItemStatus.toString(),
+                                      taskName: controllerName.text.toString(),
+                                      taskDesc: controllerDesc.text.toString(),
+                                      priority:
+                                          _selectedItemPriority.toString(),
+                                      status: _selectedItemStatus.toString(),
+                                      member: controllerMember.text.toString());
+                              await DatabaseService().shareTasks(
+                                creator: user.uid,
+                                projectId: widget.projectId,
+                                member: controllerMember.text.toString(),
                               );
                               final snackBar = SnackBar(
                                 content: Text('Task Created'),

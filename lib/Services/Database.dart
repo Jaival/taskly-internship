@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:taskly/Model/SharedTaskModel.dart';
+import 'package:taskly/Model/UserData.dart';
 import '../Model/ProjectModel.dart';
 import '../Model/TaskModel.dart';
 
@@ -17,12 +19,47 @@ class DatabaseService {
   final CollectionReference myCollectionTasks =
       FirebaseFirestore.instance.collection('Tasks');
 
+  final CollectionReference myCollectionSharedProjects =
+      FirebaseFirestore.instance.collection('SharedProjects');
+
   // Set User Profile Data
-  Future updateUserData(
-      {String email, String firstName, String lastName}) async {
+  Future setUserData(
+      {String email,
+      String firstName,
+      String lastName,
+      String userName}) async {
+    return await myCollectionUser.doc(uid).set({
+      'email': email,
+      'lastName': lastName,
+      'firstName': firstName,
+      'userName': userName
+    });
+  }
+
+  Future updateUserData({String firstName, String lastName}) async {
     return await myCollectionUser
         .doc(uid)
-        .set({'email': email, 'lastName': lastName, 'firstName': firstName});
+        .update({'lastName': lastName, 'firstName': firstName});
+  }
+
+  // Function to User stream data to User data model
+  UserData _userData(DocumentSnapshot snapshot) {
+    Map<String, dynamic> data = snapshot.data();
+    return UserData(
+        firstName: data['firstName'],
+        lastName: data['lastName'],
+        email: data['email'],
+        userName: data['userName']);
+  }
+
+  // Get Stream of User data
+  Stream<UserData> streamUserData() {
+    return myCollectionUser.doc(uid).snapshots().map(_userData);
+  }
+
+  // Get Future of User data
+  Future<UserData> futureUserData() async {
+    return await myCollectionUser.doc(uid).get().then(_userData);
   }
 
   // Set Project Data
@@ -71,14 +108,16 @@ class DatabaseService {
       String projectId,
       String projectName,
       String priority,
-      String status}) async {
+      String status,
+      String member}) async {
     return await myCollectionTasks.doc(uid).collection("userTasks").doc().set({
       'taskName': taskName,
       'taskDesc': taskDesc,
       'projectId': projectId,
       'status': status,
       'priority': priority,
-      'projectName': projectName
+      'projectName': projectName,
+      'member': member
     });
   }
 
@@ -87,12 +126,14 @@ class DatabaseService {
       {String taskName,
       String taskDesc,
       String priority,
-      String status}) async {
+      String status,
+      String member}) async {
     return await myCollectionTasks.doc(uid).collection("userTasks").doc().set({
       'taskName': taskName,
       'taskDesc': taskDesc,
       'status': status,
-      'priority': priority
+      'priority': priority,
+      'member': member
     });
   }
 
@@ -251,6 +292,60 @@ class DatabaseService {
     return await myCollectionTasks
         .doc(uid)
         .collection("userTasks")
+        .get()
+        .then(_listTaskData);
+  }
+
+  // Share Project Data
+  Future shareTasks({String projectId, String creator, String member}) async {
+    return await myCollectionSharedProjects.doc().set({
+      'projectId': projectId,
+      'creator': creator,
+      'member': member,
+    });
+  }
+
+  List<SharedTaskModel> _listSharedData(QuerySnapshot snapshot) {
+    return snapshot.docs.map((doc) {
+      Map<String, dynamic> data = doc.data();
+      return SharedTaskModel(
+        member: data['member'],
+        projectId: data['projectId'],
+        creatorId: data['creator'],
+      );
+    }).toList();
+  }
+
+  Stream<List<SharedTaskModel>> streamSharedTaskInfo({String member}) {
+    return myCollectionSharedProjects
+        .where('member', isEqualTo: member)
+        .snapshots()
+        .map(_listSharedData);
+  }
+
+  // get Shared Task data
+  Stream<List<TaskData>> streamSharedTaskData({String creator, String member}) {
+    return myCollectionTasks
+        .doc(creator)
+        .collection("userTasks")
+        .where('member', isEqualTo: member)
+        .snapshots()
+        .map(_listTaskData);
+  }
+
+  Future<List<SharedTaskModel>> futureSharedTaskInfo({String member}) {
+    return myCollectionSharedProjects
+        .where('member', isEqualTo: member)
+        .get()
+        .then(_listSharedData);
+  }
+
+  // get Shared Task data
+  Future<List<TaskData>> futureSharedTaskData({String creator, String member}) {
+    return myCollectionTasks
+        .doc(creator)
+        .collection("userTasks")
+        .where('member', isEqualTo: member)
         .get()
         .then(_listTaskData);
   }
