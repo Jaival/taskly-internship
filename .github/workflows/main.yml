@@ -15,6 +15,7 @@ jobs:
       - uses: subosito/flutter-action@v1
   
   deploy:
+    needs: [build]
     name: Deploy on GitHub pages
     runs-on: ubuntu-latest
     
